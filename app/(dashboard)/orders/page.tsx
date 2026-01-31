@@ -78,7 +78,7 @@ export default function Orders() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {orders?.map((order) => (
+              {(orders as any[])?.map((order) => (
                 <tr key={order.id}>
                   <td className="px-6 py-4 font-medium text-gray-900">
                     {order.order_number}

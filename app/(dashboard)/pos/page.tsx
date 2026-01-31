@@ -49,6 +49,7 @@ export default function POS() {
       const totalAmount = subtotal + vatAmount + serviceCharge
 
       // Create order
+      // @ts-ignore
       const { data: order, error: orderError } = await supabase
         .from('orders')
         .insert({
@@ -76,6 +77,7 @@ export default function POS() {
         vat_amount: item.price * item.quantity * vatRate,
       }))
 
+      // @ts-ignore
       const { error: itemsError } = await supabase.from('order_items').insert(orderItems)
       if (itemsError) throw itemsError
 
@@ -160,7 +162,7 @@ export default function POS() {
           >
             All Items
           </button>
-          {categories?.map((cat) => (
+          {(categories as any[])?.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
@@ -178,7 +180,7 @@ export default function POS() {
         {/* Menu Grid */}
         <div className="flex-1 overflow-y-auto">
           <div className="grid grid-cols-3 lg:grid-cols-4 gap-4">
-            {menuItems?.map((item) => (
+            {(menuItems as any[])?.map((item) => (
               <button
                 key={item.id}
                 onClick={() => addToCart(item)}

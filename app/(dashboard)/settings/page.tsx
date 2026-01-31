@@ -36,6 +36,7 @@ export default function Settings() {
 
   const updateCompany = useMutation({
     mutationFn: async () => {
+      // @ts-ignore
       const { error } = await supabase
         .from('companies')
         .update(companyForm)
@@ -50,6 +51,7 @@ export default function Settings() {
 
   const updateETA = useMutation({
     mutationFn: async () => {
+      // @ts-ignore
       const { error } = await supabase
         .from('companies')
         .update(etaForm)

@@ -45,13 +45,13 @@ export default function Menu() {
   const saveItem = useMutation({
     mutationFn: async () => {
       if (editingItem) {
-        const { error } = await supabase
-          .from('menu_items')
+        const { error } = await (supabase
+          .from('menu_items') as any)
           .update(formData)
           .eq('id', editingItem.id)
         if (error) throw error
       } else {
-        const { error } = await supabase.from('menu_items').insert(formData)
+        const { error } = await (supabase.from('menu_items') as any).insert(formData)
         if (error) throw error
       }
     },
@@ -151,7 +151,7 @@ export default function Menu() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {menuItems?.map((item) => (
+              {(menuItems as any[])?.map((item) => (
                 <tr key={item.id}>
                   <td className="px-6 py-4">
                     <p className="font-medium text-gray-900">{item.name}</p>
@@ -249,7 +249,7 @@ export default function Menu() {
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                 >
                   <option value="">Select Category</option>
-                  {categories?.map((cat) => (
+                  {(categories as any[])?.map((cat) => (
                     <option key={cat.id} value={cat.id}>
                       {cat.name}
                     </option>

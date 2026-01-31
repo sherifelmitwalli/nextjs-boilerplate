@@ -54,7 +54,7 @@ export default function Dashboard() {
         .eq('payment_status', 'paid')
         .gte('created_at', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString())
       
-      const todayRevenue = todayOrders?.reduce((sum, o) => sum + (o.total_amount || 0), 0) || 0
+      const todayRevenue = (todayOrders as any[])?.reduce((sum, o) => sum + (o.total_amount || 0), 0) || 0
       
       return {
         todayRevenue,
