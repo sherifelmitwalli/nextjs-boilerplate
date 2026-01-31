@@ -203,8 +203,8 @@ export default function Payroll() {
                   </button>
                 </div>
               ))}
-            {employees.filter(
-              (e) => !payrollRecords.some((r) => r.employee_id === e.id)
+            {(employees as any[]).filter(
+              (e: any) => !(payrollRecords as any[]).some((r: any) => r.employee_id === e.id)
             ).length === 0 && (
               <p className="text-gray-500 text-center py-4">
                 All employees have been calculated for this period
@@ -246,7 +246,7 @@ export default function Payroll() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {payrollRecords.map((record) => (
+                {(payrollRecords as any[]).map((record: any) => (
                   <tr key={record.id}>
                     <td className="px-6 py-4">
                       <p className="font-medium text-gray-900">

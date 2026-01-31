@@ -49,9 +49,8 @@ export default function POS() {
       const totalAmount = subtotal + vatAmount + serviceCharge
 
       // Create order
-      // @ts-ignore
-      const { data: order, error: orderError } = await supabase
-        .from('orders')
+      const { data: order, error: orderError } = await (supabase
+        .from('orders') as any)
         .insert({
           order_type: orderType,
           table_number: tableNumber || null,
