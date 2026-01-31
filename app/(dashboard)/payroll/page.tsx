@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { supabase } from '../../../lib/supabase'
+import { supabase } from '@/lib/supabase'
 import { format } from 'date-fns'
 import { Calculator, Download, Plus } from 'lucide-react'
 

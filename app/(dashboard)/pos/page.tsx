@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { supabase } from '../../../lib/supabase'
+import { supabase } from '@/lib/supabase'
 import { Plus, Minus, Trash2, Receipt, Printer } from 'lucide-react'
-import type { Tables } from '../../../lib/supabase'
+import type { Tables } from '@/lib/supabase'
 
 interface CartItem extends Tables<'menu_items'> {
   quantity: number
