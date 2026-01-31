@@ -57,14 +57,15 @@ export default function Reports() {
   })
 
   // Calculate summary stats
-  const totalSales = salesData?.reduce((sum, o) => sum + (o.total_amount || 0), 0) || 0
-  const totalVAT = salesData?.reduce((sum, o) => sum + (o.vat_amount || 0), 0) || 0
-  const totalServiceCharge = salesData?.reduce((sum, o) => sum + (o.service_charge || 0), 0) || 0
-  const orderCount = salesData?.length || 0
+  const salesDataAny = salesData as any[]
+  const totalSales = salesDataAny?.reduce((sum, o: any) => sum + (o.total_amount || 0), 0) || 0
+  const totalVAT = salesDataAny?.reduce((sum, o: any) => sum + (o.vat_amount || 0), 0) || 0
+  const totalServiceCharge = salesDataAny?.reduce((sum, o: any) => sum + (o.service_charge || 0), 0) || 0
+  const orderCount = salesDataAny?.length || 0
   const avgOrderValue = orderCount > 0 ? totalSales / orderCount : 0
 
   // Prepare chart data
-  const dailySales = salesData?.reduce((acc: any[], order) => {
+  const dailySales = salesDataAny?.reduce((acc: any[], order: any) => {
     const date = format(new Date(order.created_at), 'MMM dd')
     const existing = acc.find((d) => d.date === date)
     if (existing) {
