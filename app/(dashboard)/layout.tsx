@@ -2,8 +2,8 @@
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuthStore } from '../../stores/authStore'
-import Layout from '../../components/Layout'
+import { useAuthStore } from '../../../stores/authStore'
+import Layout from '../../../components/Layout'
 
 export default function DashboardLayout({
   children,
