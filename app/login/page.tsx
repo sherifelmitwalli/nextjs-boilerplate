@@ -8,22 +8,29 @@ import { UtensilsCrossed } from 'lucide-react'
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [loginError, setLoginError] = useState('')
   const { login, isLoading, error, user } = useAuthStore()
   const router = useRouter()
 
   useEffect(() => {
+    console.log('User state changed:', user)
     if (user) {
+      console.log('Redirecting to dashboard...')
       router.push('/')
+      router.refresh()
     }
   }, [user, router])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setLoginError('')
     try {
+      console.log('Attempting login...')
       await login(email, password)
-      // Redirect will happen via useEffect when user state updates
-    } catch {
-      // Error handled in store
+      console.log('Login successful')
+    } catch (err: any) {
+      console.error('Login error:', err)
+      setLoginError(err.message || 'Login failed')
     }
   }
 
@@ -67,9 +74,9 @@ export default function Login() {
             />
           </div>
 
-          {error && (
+          {(error || loginError) && (
             <div className="p-3 bg-red-50 text-red-600 rounded-lg text-sm">
-              {error}
+              {error || loginError}
             </div>
           )}
 
