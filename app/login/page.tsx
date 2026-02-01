@@ -48,7 +48,7 @@ export default function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="admin@restaurant.com"
+              placeholder="admin@egyptrestaurant.com"
               required
             />
           </div>
@@ -84,7 +84,7 @@ export default function Login() {
 
         <div className="mt-6 text-center text-sm text-gray-500">
           <p>Demo Credentials:</p>
-          <p>admin@restaurant.com / password</p>
+          <p>admin@egyptrestaurant.com / password</p>
         </div>
       </div>
     </div>
