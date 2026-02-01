@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export default function proxy(request: NextRequest) {
+  // TEMPORARILY DISABLE AUTH CHECK - REMOVE AFTER TESTING
+  return NextResponse.next()
+  
+  /*
   const authCookie = request.cookies.get('auth-storage')
   
   // Public routes that don't require authentication
@@ -22,6 +26,7 @@ export default function proxy(request: NextRequest) {
   }
   
   return NextResponse.next()
+  */
 }
 
 export const config = {
